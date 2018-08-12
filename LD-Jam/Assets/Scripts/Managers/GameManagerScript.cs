@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    [Header("General")]
-    [Space]
-    public int currentCoins;
-
     [Header("Shop Settings")]
     [Space]
     public int saveRoomPrice = 3;
@@ -17,6 +13,9 @@ public class GameManagerScript : MonoBehaviour
     [Space]
     public float saveRoomSpeed = 0.5f;
     public float repairRoomSpeed = 0.2f;
+
+    [HideInInspector]
+    public bool isPaused;
 
     public static GameManagerScript instance;
 
@@ -32,15 +31,10 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
-    public void UpdateCoins(int value)
-    {
-        currentCoins += value;
-        UIManagerScript.instance.UpdateCoinText();
-    }
-
     public void GameOver()
     {
         Time.timeScale = 0;
+        isPaused = true;
         UIManagerScript.instance.ShowGameOverScreen();
     }
 }

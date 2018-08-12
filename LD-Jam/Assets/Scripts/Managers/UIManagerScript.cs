@@ -26,14 +26,9 @@ public class UIManagerScript : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void UpdateClayPointsText(int value)
     {
-        UpdateCoinText();
-    }
-
-    public void UpdateCoinText()
-    {
-        coinText.text = GameManagerScript.instance.currentCoins.ToString();
+        coinText.text = value.ToString();
     }
 
     public void ShowGameOverScreen()

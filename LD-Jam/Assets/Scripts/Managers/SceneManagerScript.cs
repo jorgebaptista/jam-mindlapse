@@ -19,9 +19,24 @@ public class SceneManagerScript : MonoBehaviour
         }
     }
 
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
     public void RestartScene()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Application Quit");
     }
 }
