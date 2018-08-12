@@ -17,10 +17,10 @@ TagManager:
   - Wall
   - Room
   - Player
+  - Orb
+  - PlayerAttack
   - Enemy
-  - 
-  - 
-  - 
+  - EnemyAttack
   - 
   - 
   - 

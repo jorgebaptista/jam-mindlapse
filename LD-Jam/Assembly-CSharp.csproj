@@ -61,7 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AnimationScript.cs" />
+    <Compile Include="Assets\IDamageable.cs" />
+    <Compile Include="Assets\OrbExplodeBehaviour.cs" />
+    <Compile Include="Assets\OrbScript.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\CollapseScript.cs" />
     <Compile Include="Assets\Scripts\DestroyAfter.cs" />
@@ -71,21 +73,24 @@
     <Compile Include="Assets\Scripts\Managers\RoomManagerScript.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneManagerScript.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManagerScript.cs" />
-    <Compile Include="Assets\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Scripts\Menu\quitScript.cs" />
+    <Compile Include="Assets\Scripts\Menu\startScript.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimationScript.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\RoomScript.cs" />
-    <Compile Include="Assets\Scripts\ThrowingAnimationScript.cs" />
     <Compile Include="Assets\Scripts\ZOrderScript.cs" />
+    <Compile Include="Assets\Sound_FX\SoundFXPlayer.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>E:/Files/Projects/Game Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Files/Projects/Game Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/Files/Projects/Game Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Files/Projects/Game Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Development Tools/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
