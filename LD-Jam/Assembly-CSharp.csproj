@@ -61,26 +61,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EnemyAttackBehaviour.cs" />
-    <Compile Include="Assets\EnemyDieBehaviour.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\CollapseScript.cs" />
-    <Compile Include="Assets\Scripts\DialogueContainerScript.cs" />
-    <Compile Include="Assets\Scripts\EnemyScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAttackBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyDieBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\Managers\RoomManagerScript.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneManagerScript.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManagerScript.cs" />
-    <Compile Include="Assets\Scripts\OrbExplodeBehaviour.cs" />
-    <Compile Include="Assets\Scripts\OrbScript.cs" />
+    <Compile Include="Assets\Scripts\Orb\OrbExplodeBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Orb\OrbScript.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Scenary\RoomScript.cs" />
-    <Compile Include="Assets\Scripts\XMLReader.cs" />
+    <Compile Include="Assets\Scripts\UI\DialogueContainerScript.cs" />
+    <Compile Include="Assets\Scripts\UI\XMLReader.cs" />
     <Compile Include="Assets\Scripts\ZOrderScript.cs" />
     <Compile Include="Assets\Sounds\SFX\SoundFXPlayer.cs" />
-    <None Include="Assets\Scripts\Resources\Dialogue.xml" />
+    <None Include="Assets\Scripts\UI\Resources\Dialogue.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
