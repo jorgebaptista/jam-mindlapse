@@ -35,6 +35,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [SerializeField]
     private GameObject orbPrefab;
 
+    private int poolIndex;
+
     [Header("UI References")]
     [Space]
     [SerializeField]
@@ -67,8 +69,11 @@ public class PlayerScript : MonoBehaviour, IDamageable
     private void Start()
     {
         UIManagerScript.instance.UpdateClayPointsText(currentClayPoints);
+
+        poolIndex = PoolManagerScript.instance.PreCache(orbPrefab, 2);
     }
 
+    bool goingUp = false;
     private void Update()
     {
         if (!GameManagerScript.instance.isPaused)
@@ -84,13 +89,31 @@ public class PlayerScript : MonoBehaviour, IDamageable
                 }
             }
 
+            if (verticalMove > 0) goingUp = true;
+            if (verticalMove < 0 || horizontalMove != 0) goingUp = false;
             if (Input.GetButton("Fire1"))
             {
-                arm.localRotation = Quaternion.Euler(0, 0, 0);
+                if (goingUp) {
+                    arm.localPosition = new Vector3(-0.5f, 0.38f, 10f);
+                    arm.localRotation = Quaternion.Euler(0, 0, -185.4f);
+                    arm.localScale = new Vector3(1, -1, 1);
+                } else {
+                    arm.localScale = new Vector3(1, 1, 1);
+                    arm.localRotation = Quaternion.Euler(0, 0, -16f);
+                    arm.localPosition = new Vector3(0.7f, 0.46f, 10f);
+                }
             }
             else
             {
-                arm.localRotation = Quaternion.Euler(0, 0, -90);
+                if (goingUp) {
+                    arm.localPosition = new Vector3(-0.45f, 0.38f, 10f);
+                    arm.localRotation = Quaternion.Euler(0, 0, -70f);//110f);
+                    arm.localScale = new Vector3(1, -1, 1);
+                } else {
+                    arm.localScale = new Vector3(1, 1, 1);
+                    arm.localRotation = Quaternion.Euler(0, 0, -110f);
+                    arm.localPosition = new Vector3(0.41f, 0.53f, 10f);
+                }
             }
 
             if (Input.GetButton("Interact"))
@@ -102,6 +125,10 @@ public class PlayerScript : MonoBehaviour, IDamageable
                 else if (inBrokenRoom)
                 {
                     RebuildRoom();
+                }
+                else
+                {
+                    ToggleTimerBar(false);
                 }
             }
             else
@@ -164,6 +191,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
     private void Shoot()
     {
+        arm.localRotation = Quaternion.Euler(0, 0, 0);
+
         baseTimer = Time.time + cooldown;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
 
@@ -171,10 +200,20 @@ public class PlayerScript : MonoBehaviour, IDamageable
         string dialogue = dialogueSource.GetCharacterDialogue("Spell_Cast", currentClayPoints);
         dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
 
-        GameObject orb = Instantiate(orbPrefab);
-        orb.transform.position = shootPoint.position;
-        orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed);
+        GameObject orb = PoolManagerScript.instance.GetCachedPrefab(poolIndex);
 
+        if (orb != null)
+        {
+            orb.transform.position = shootPoint.position;
+            orb.SetActive(true);
+            orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed);
+
+            arm.localRotation = Quaternion.Euler(0, 0, -90);
+        }
+        else
+        {
+            Debug.LogError("Orb in poolmanager not found.");
+        }
     }
 
     private void RepairRoom()
