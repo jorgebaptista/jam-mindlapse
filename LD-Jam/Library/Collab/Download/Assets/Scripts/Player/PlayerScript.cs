@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour, IDamageable
 {
@@ -33,12 +34,30 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [SerializeField]
     private Transform shootPoint;
     [SerializeField]
+    private GameObject dummyOrb;
+    [SerializeField]
+    private GameObject radiusIndicator;
+
+    [Space]
+    [SerializeField]
     private GameObject orbPrefab;
+
+    private int poolIndex;
 
     [Header("UI References")]
     [Space]
     [SerializeField]
     private Image timerBar;
+
+    [Space]
+    [SerializeField]
+    private GameObject canvas;
+    [SerializeField]
+    private RectTransform clayIndicatorPos;
+    [SerializeField]
+    private GameObject clayIndicatorPrefab;
+
+    [Space]
     [SerializeField]
     private GameObject dialogueOverlay;
     [SerializeField]
@@ -67,6 +86,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
     private void Start()
     {
         UIManagerScript.instance.UpdateClayPointsText(currentClayPoints);
+
+        poolIndex = PoolManagerScript.instance.PreCache(orbPrefab, 2);
     }
 
     bool goingUp = false;
@@ -79,7 +100,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
             if (Time.time > baseTimer)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonUp("Fire1"))
                 {
                     Shoot();
                 }
@@ -87,7 +108,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
             if (verticalMove > 0) goingUp = true;
             if (verticalMove < 0 || horizontalMove != 0) goingUp = false;
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1") && Time.time > baseTimer)
             {
                 if (goingUp) {
                     arm.localPosition = new Vector3(-0.5f, 0.38f, 10f);
@@ -98,6 +119,11 @@ public class PlayerScript : MonoBehaviour, IDamageable
                     arm.localRotation = Quaternion.Euler(0, 0, -16f);
                     arm.localPosition = new Vector3(0.7f, 0.46f, 10f);
                 }
+
+                dummyOrb.SetActive(true);
+                radiusIndicator.SetActive(true);
+                Vector2 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+                radiusIndicator.transform.position = new Vector2(mousepos.x, mousepos.y);
             }
             else
             {
@@ -110,6 +136,9 @@ public class PlayerScript : MonoBehaviour, IDamageable
                     arm.localRotation = Quaternion.Euler(0, 0, -110f);
                     arm.localPosition = new Vector3(0.41f, 0.53f, 10f);
                 }
+
+                dummyOrb.SetActive(false);
+                radiusIndicator.SetActive(false);
             }
 
             if (Input.GetButton("Interact"))
@@ -142,11 +171,21 @@ public class PlayerScript : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         UpdateClayPoints(-damage);
-        // Play ouch sound
+
+        FindObjectOfType<SoundFXPlayer>().PlayOuchSound();
     }
 
     public void UpdateClayPoints(int value)
     {
+        GameObject clayIndicator = Instantiate(clayIndicatorPrefab, canvas.transform);
+        TextMeshProUGUI clayIndicatorText = clayIndicator.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        clayIndicatorText.text = value.ToString();
+        clayIndicatorText.color = value < 0 ? Color.red : Color.green;
+
+        clayIndicator.gameObject.SetActive(false);
+        clayIndicator.gameObject.SetActive(true);
+
         currentClayPoints += value;
         bool increased = value > 0;
 
@@ -169,7 +208,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
     private void SanityGained()
     {
-        // Play sanity gained sound
+        FindObjectOfType<SoundFXPlayer>().PlaySanityGainSound();
 
         int testRemainder;
         Math.DivRem(currentClayPoints, 5, out testRemainder);
@@ -196,22 +235,32 @@ public class PlayerScript : MonoBehaviour, IDamageable
         string dialogue = dialogueSource.GetCharacterDialogue("Spell_Cast", currentClayPoints);
         dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
 
-        GameObject orb = Instantiate(orbPrefab);
-        orb.transform.position = shootPoint.position;
-        orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed);
+        GameObject orb = PoolManagerScript.instance.GetCachedPrefab(poolIndex);
 
-        arm.localRotation = Quaternion.Euler(0, 0, -90);
+        if (orb != null)
+        {
+            orb.transform.position = shootPoint.position;
+            orb.SetActive(true);
+            orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed, damage);
+
+            arm.localRotation = Quaternion.Euler(0, 0, -90);
+        }
+        else
+        {
+            Debug.LogError("Orb in poolmanager not found.");
+        }
     }
 
     private void RepairRoom()
     {
-        // Loop repairing sound
         if (currentClayPoints >= GameManagerScript.instance.saveRoomPrice)
         {
             if (roomScript != null)
             {
                 string dialogue = dialogueSource.GetCharacterDialogue("Room_Repair", currentClayPoints);
                 dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
+
+                FindObjectOfType<SoundFXPlayer>().ToggleRoomRepairSound(true);
 
                 ToggleTimerBar(true);
 
@@ -223,6 +272,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
                 {
                     roomScript.EndFlash();
                     UpdateClayPoints(-GameManagerScript.instance.saveRoomPrice);
+                    FindObjectOfType<SoundFXPlayer>().ToggleRoomRepairSound(false);
                     ToggleTimerBar(false);
                 }
             }
@@ -241,6 +291,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
             {
                 ToggleTimerBar(true);
 
+                FindObjectOfType<SoundFXPlayer>().ToggleRoomRebuildSound(true);
+
                 if (timerBar.fillAmount != 1)
                 {
                     timerBar.fillAmount = Mathf.MoveTowards(timerBar.fillAmount, 1, GameManagerScript.instance.repairRoomSpeed * Time.deltaTime);
@@ -249,6 +301,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
                 {
                     roomScript.Rebuild();
                     UpdateClayPoints(-GameManagerScript.instance.repairRoomPrice);
+                    FindObjectOfType<SoundFXPlayer>().ToggleRoomRebuildSound(false);
                     ToggleTimerBar(false);
 
                     string dialogue = dialogueSource.GetCharacterDialogue("Room_Rebuilt", currentClayPoints);
@@ -273,6 +326,18 @@ public class PlayerScript : MonoBehaviour, IDamageable
     public void RoomBroken()
     {
         string dialogue = dialogueSource.GetCharacterDialogue("Room_Destroyed", currentClayPoints);
+        dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
+    }
+
+    public void RoomWarning()
+    {
+        string dialogue = dialogueSource.GetCharacterDialogue("Room_Warning", currentClayPoints);
+        dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
+    }
+
+    public void RoomBuild()
+    {
+        string dialogue = dialogueSource.GetCharacterDialogue("Room_Build", currentClayPoints);
         dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
     }
 

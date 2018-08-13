@@ -21,12 +21,11 @@ GameObject:
   - component: {fileID: 4170505891754164}
   - component: {fileID: 212366909897160886}
   - component: {fileID: 95013408768399206}
-  - component: {fileID: 114259205679759766}
   - component: {fileID: 61453466360302654}
   - component: {fileID: 114086983000977890}
   m_Layer: 8
   m_Name: wall04_0
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,17 +95,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ee618b0da490493aadd9b49337b0194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114259205679759766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1906023903297570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46768a46e52c4be8b6364d037cf87bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212366909897160886

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RoomScript : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject repairCanvas;
+    [SerializeField]
+    private GameObject rebuildCanvas;
+
     private float flashDuration;
     private float fastFlashTimer;
 
@@ -20,19 +25,26 @@ public class RoomScript : MonoBehaviour
 
     private BoxCollider2D myBoxCollider2D;
     private SpriteRenderer[] myChildSpriteRenderers;
-
-    private RoomManagerScript roomManagerScript;
+    
     private PlayerScript playerScript;
+
+    private PlayerScript PlayerScriptHolder
+    {
+        get
+        {
+            playerScript = playerScript ?? GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+            return playerScript;
+        }
+    }
 
     private void Awake()
     {
         myBoxCollider2D = GetComponent<BoxCollider2D>();
     }
+
     private void Start()
     {
         myChildSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-        roomManagerScript = FindObjectOfType<RoomManagerScript>();
     }
 
     private void Update()
@@ -40,6 +52,15 @@ public class RoomScript : MonoBehaviour
         if (isFlashing)
         {
             Flash();
+        }
+
+        if (isBroken && hasPlayerIn)
+        {
+            rebuildCanvas.SetActive(true);
+        }
+        else
+        {
+            rebuildCanvas.SetActive(false);
         }
     }
 
@@ -51,9 +72,14 @@ public class RoomScript : MonoBehaviour
         flashSpeed = normalSpeed;
         flashColor = normalColor;
         fastFlashColor = fastColor;
+
+        //PlayerScriptHolder.RoomWarning();
+        FindObjectOfType<SoundFXPlayer>().PlayRoomCrackSound();
+
+        repairCanvas.SetActive(true);
     }
 
-    private void Flash() // rename to crack when we have animations for it
+    private void Flash()
     {
         if (flashDuration > Time.time)
         {
@@ -89,13 +115,15 @@ public class RoomScript : MonoBehaviour
             myChildSpriteRenderers[i].color = Color.white;
         }
 
-        roomManagerScript.ResetFlash();
+        RoomManagerScript.instance.ResetFlash();
+
+        repairCanvas.SetActive(false);
     }
 
     private void Break()
     {
         EndFlash();
-        roomManagerScript.ResetFlash();
+        RoomManagerScript.instance.ResetFlash();
         isBroken = true;
 
         myBoxCollider2D.size = new Vector2(myBoxCollider2D.size.x * 1.9f, myBoxCollider2D.size.y * 1.9f);
@@ -105,18 +133,21 @@ public class RoomScript : MonoBehaviour
             myChildSpriteRenderers[i].color = Color.white;
         }
 
-        InvertActiveChildren();
+        DestroyChildren();
 
         if (hasPlayerIn)
         {
+            FindObjectOfType<SoundFXPlayer>().PlayFallSound();
             GameManagerScript.instance.GameOver();
         }
         else
         {
-            // This doesn't work at the moment. We need to get dialogue to show from here.
-            // playerScript = playerScript ?? other.GetComponent<PlayerScript>();
-            // playerScript.RoomBroken();
+            //PlayerScriptHolder.RoomBroken();
+            FindObjectOfType<SoundFXPlayer>().PlayRoomCollapseSound();
         }
+
+        RoomManagerScript.instance.WallUpdate();
+
     }
 
     public void Rebuild()
@@ -125,16 +156,52 @@ public class RoomScript : MonoBehaviour
 
         myBoxCollider2D.size = new Vector2(myBoxCollider2D.size.x / 1.9f, myBoxCollider2D.size.y / 1.9f);
 
-        InvertActiveChildren();
+        RebuildChildren();
+
+        RoomManagerScript.instance.WallUpdate();
     }
 
-    private void InvertActiveChildren()
+    private void DestroyChildren()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
-            child.SetActive(!child.activeInHierarchy);
+
+            Animator animator = child.GetComponent<Animator>();
+
+            if (animator != null)
+            {
+                animator.SetTrigger("Collapse");
+            }
+            else
+            {
+                child.SetActive(!child.activeInHierarchy);
+            }
         }
+
+        repairCanvas.SetActive(false);
+        //rebuildCanvas.SetActive(true);
+    }
+    private void RebuildChildren()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+
+            if (!child.CompareTag("UI"))
+            {
+                child.SetActive(!child.activeInHierarchy);
+
+                Animator animator = child.GetComponent<Animator>();
+
+                if (animator != null)
+                {
+                    animator.SetTrigger("Rebuild");
+                }
+            }
+        }
+
+        //rebuildCanvas.SetActive(false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -149,21 +216,22 @@ public class RoomScript : MonoBehaviour
             {
                 if (isFlashing)
                 {
-                    playerScript.ToggleInFlashingRoom(true, this);
+                    PlayerScriptHolder.ToggleInFlashingRoom(true, this);
                 }
                 else
                 {
-                    playerScript.ToggleInFlashingRoom(false);
+                    PlayerScriptHolder.ToggleInFlashingRoom(false);
                 }
             }
             else if (isBroken)
             {
-                playerScript.ToggleInBrokenRoom(true, this);
+                PlayerScriptHolder.ToggleInBrokenRoom(true, this);
+                PlayerScriptHolder.RoomBuild();
             }
             else
             {
-                //playerScript.ToggleInFlashingRoom(false);
-                playerScript.ToggleInBrokenRoom(false);
+                //PlayerScriptHolder.ToggleInFlashingRoom(false);
+                PlayerScriptHolder.ToggleInBrokenRoom(false);
             }
         }
     }
@@ -181,11 +249,11 @@ public class RoomScript : MonoBehaviour
 
             if (!isBroken)
             {
-                playerScript.ToggleInFlashingRoom(false);
+                PlayerScriptHolder.ToggleInFlashingRoom(false);
             }
             else if (isBroken)
             {
-                playerScript.ToggleInBrokenRoom(false);
+                PlayerScriptHolder.ToggleInBrokenRoom(false);
             }
         }
     }

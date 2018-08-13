@@ -6,7 +6,18 @@ using UnityEngine;
 public class SoundFXPlayer : MonoBehaviour
 {
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
+
+    public AudioSource AudioSource
+    {
+        get
+        {
+            audioSource = audioSource ?? GetComponent<AudioSource>();
+            return audioSource;
+        }
+        set { audioSource = value; }
+    }
+
 
     AudioClip Analogue_Boss_Spawn;
     AudioClip Analogue_Monster_Attack;
@@ -28,8 +39,6 @@ public class SoundFXPlayer : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         LoadPlayerSounds();
         LoadMonsterSounds();
         LoadEnvironmentSounds();
@@ -39,39 +48,40 @@ public class SoundFXPlayer : MonoBehaviour
 
     public void PlayFootStepSound()
     {
-        audioSource.pitch = (Random.Range(0.6f, 1.0f));
-        audioSource.PlayOneShot(Analogue_Player_Step);
+        AudioSource.pitch = (Random.Range(0.6f, 1.0f));
+        AudioSource.PlayOneShot(Analogue_Player_Step);
     }
 
     public void PlayFallSound()
     {
-        audioSource.PlayOneShot(Analogue_Player_Fall);
+        AudioSource.PlayOneShot(Analogue_Player_Fall);
     }
 
     public void PlayOuchSound()
     {
-        audioSource.PlayOneShot(Analogue_Player_Ouch);
+        AudioSource.PlayOneShot(Analogue_Player_Ouch);
     }
 
     public void PlaySpawnSound()
     {
-        audioSource.PlayOneShot(Analogue_Player_Spawn);
+        AudioSource.PlayOneShot(Analogue_Player_Spawn);
     }
 
     public void PlaySanityGainSound()
     {
-        audioSource.PlayOneShot(Analogue_Monster_Death);
+        audioSource.PlayOneShot(Analogue_Sanity_Gain);
     }
 
     public void PlaySpellCastSound()
     {
-        audioSource.pitch = (Random.Range(0.8f, 1.0f));
-        audioSource.PlayOneShot(Analogue_Spell_Cast);
+        AudioSource.pitch = (Random.Range(0.8f, 1.0f));
+        AudioSource.PlayOneShot(Analogue_Spell_Cast);
     }
 
     public void PlaySpellLandSound()
     {
-        audioSource.PlayOneShot(Analogue_Spell_Land);
+        AudioSource.Stop();
+        AudioSource.PlayOneShot(Analogue_Spell_Land);
     }
 
     #endregion
@@ -80,29 +90,27 @@ public class SoundFXPlayer : MonoBehaviour
 
     public void PlayMonsterAttackSound()
     {
-        audioSource.PlayOneShot(Analogue_Monster_Attack);
+        AudioSource.PlayOneShot(Analogue_Monster_Attack);
     }
 
     public void PlayMonsterDeathSound()
     {
-        audioSource.PlayOneShot(Analogue_Monster_Death);
+        AudioSource.PlayOneShot(Analogue_Monster_Death);
     }
 
     public void ToggleMonsterHoverSound(bool active)
     {
-        // Need to change this so it loops
-        if (active)
-            audioSource.PlayOneShot(Analogue_Monster_Hover);
+        LoopSound(active, Analogue_Monster_Hover);
     }
 
     public void PlayMonsterWallPassSound()
     {
-        audioSource.PlayOneShot(Analogue_Monster_Pass_Through_Wall);
+        AudioSource.PlayOneShot(Analogue_Monster_Pass_Through_Wall);
     }
 
     public void PlayMonsterSpawnSound()
     {
-        audioSource.PlayOneShot(Analogue_Monster_Spawn);
+        AudioSource.PlayOneShot(Analogue_Monster_Spawn);
     }
 
     #endregion
@@ -111,27 +119,38 @@ public class SoundFXPlayer : MonoBehaviour
 
     public void PlayRoomCollapseSound()
     {
-        audioSource.PlayOneShot(Analogue_Room_Collapse);
+        AudioSource.PlayOneShot(Analogue_Room_Collapse);
     }
 
     public void PlayRoomCrackSound()
     {
-        audioSource.PlayOneShot(Analogue_Room_Crack);
+        AudioSource.PlayOneShot(Analogue_Room_Crack);
     }
 
-    public void ToggleRoomRebuildSound()
+    public void ToggleRoomRebuildSound(bool active)
     {
-        audioSource.PlayOneShot(Analogue_Room_Rebuild);
+        LoopSound(active, Analogue_Room_Rebuild);
     }
 
-    public void PlayRoomRepairSound(bool active)
+    public void ToggleRoomRepairSound(bool active)
     {
-        // Need to change this to loop
-        if (active)
-            audioSource.PlayOneShot(Analogue_Room_Repair);
+        LoopSound(active, Analogue_Room_Repair);
     }
 
     #endregion
+
+    private void LoopSound(bool active, AudioClip sound)
+    {
+        AudioSource.loop = active;
+        if (active)
+        {
+            AudioSource.PlayOneShot(sound);
+        }
+        else
+        {
+            AudioSource.Stop();
+        }
+    }
 
     #region Load Sounds
 

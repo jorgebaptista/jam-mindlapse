@@ -83,6 +83,11 @@ public class OrbScript : MonoBehaviour
             {
                 other.GetComponent<IDamageable>().TakeDamage(damage);
             }
+
+            if (other.CompareTag("Player"))
+            {
+                other.GetComponent<PlayerScript>().Immunity();
+            }
         }
     }
 }

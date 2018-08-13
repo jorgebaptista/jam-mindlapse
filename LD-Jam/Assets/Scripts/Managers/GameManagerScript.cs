@@ -19,8 +19,6 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     private int initialEnemies = 5;
     [SerializeField]
-    private bool limitMaxEnemies = true;
-    [SerializeField]
     private int maxEnemies = 10;
     [SerializeField]
     private float spawnTimer = 2;
@@ -30,8 +28,8 @@ public class GameManagerScript : MonoBehaviour
     private GameObject enemyPrefab;
     private GameObject[] spawners;
     private GameObject[] enemies;
-    private int numberOfSpawns;
-    private int poolIndex;
+    //private int numberOfSpawns;
+    //private int poolIndex;
     private int numberOfEnemies;
 
     private bool spawnerIsOn;
@@ -55,9 +53,9 @@ public class GameManagerScript : MonoBehaviour
 
     private void Start()
     {
-        poolIndex = PoolManagerScript.instance.PreCache(enemyPrefab);
+        //poolIndex = PoolManagerScript.instance.PreCache(enemyPrefab);
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
-        numberOfSpawns = spawners.Length;
+        //numberOfSpawns = spawners.Length;
 
         StartCoroutine(Spawn());
 

@@ -142,7 +142,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.1, y: 6.95}
+    oldSize: {x: 2.35, y: 7.133333}
     newSize: {x: 2.0833333, y: 7.233333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 1
-  movementSpeed: 2.5
+  movementSpeed: 1.5
   dieFallingTime: 2
   isFacingLeft: 1
   damage: 1
@@ -314,6 +314,8 @@ MonoBehaviour:
   checkRadius: 0.3
   perceptionRadius: 6
   target: {fileID: 0}
+  clayOffset: -1
+  clayPrefab: {fileID: 1912143641534364, guid: b2cea3075a1ee40aaa3ee17532500b46, type: 2}
 --- !u!114 &114705177418434864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -371,7 +373,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cf9e7299acbbd4b7685ba6ffdbd4f836, type: 3}
+  m_Sprite: {fileID: 21300062, guid: 847b89da519e44ceeacfa41c3c1c104a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

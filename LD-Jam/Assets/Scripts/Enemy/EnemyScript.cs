@@ -51,6 +51,12 @@ public class EnemyScript : MonoBehaviour, IDamageable
     [SerializeField]
     private Transform target;
 
+    [Space]
+    [SerializeField]
+    private float clayOffset = -1;
+    [SerializeField]
+    private GameObject clayPrefab;
+
     private int currentLife;
     private float horizontalPosition;
 
@@ -59,7 +65,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
     private bool attacked;
     private bool canFlip;
 
-    private SpriteRenderer mySpriteRenderer;
+    //private SpriteRenderer mySpriteRenderer;
     private Animator myAnimator;
     private Rigidbody2D myRigidBody2D;
     private Collider2D myCollider2D;
@@ -72,10 +78,13 @@ public class EnemyScript : MonoBehaviour, IDamageable
         isAlive = true;
         currentLife = life;
 
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        //mySpriteRenderer = GetComponent<SpriteRenderer>();
         myAnimator = GetComponent<Animator>();
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myCollider2D = GetComponent<Collider2D>();
+
+        FindObjectOfType<SoundFXPlayer>().PlayMonsterSpawnSound();
+        FindObjectOfType<SoundFXPlayer>().ToggleMonsterHoverSound(true);
     }
 
     private void Start()
@@ -196,10 +205,14 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        FindObjectOfType<SoundFXPlayer>().ToggleMonsterHoverSound(false);
         isAlive = false;
         myCollider2D.enabled = false;
         myAnimator.SetTrigger("Die");
         myAnimator.SetBool("Is Alive", false);
+
+        GameObject clay = Instantiate(clayPrefab);
+        clay.transform.position = new Vector3(transform.position.x, transform.position.y + clayOffset);
     }
 
     public void Dismiss()

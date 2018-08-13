@@ -158,10 +158,10 @@ TextureImporter:
       name: Enemy_attack_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1621
-        width: 125
-        height: 427
+        x: 8
+        y: 1608
+        width: 138
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd6cd90f68728334ebf18dbeeba246f2
+      spriteID: fca8906182faa4102bcf0bf00c82ca3c
       vertices: []
       indices: 
       edges: []
@@ -178,10 +178,10 @@ TextureImporter:
       name: Enemy_attack_1
       rect:
         serializedVersion: 2
-        x: 131
-        y: 1619
-        width: 135
-        height: 428
+        x: 163
+        y: 1604
+        width: 149
+        height: 429
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,7 +189,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 833fc330011b4e64087c797a40bdbe90
+      spriteID: 06bdd559d62a94113ada93767f70a730
       vertices: []
       indices: 
       edges: []
@@ -198,10 +198,10 @@ TextureImporter:
       name: Enemy_attack_2
       rect:
         serializedVersion: 2
-        x: 278
-        y: 1616
-        width: 145
-        height: 430
+        x: 332
+        y: 1603
+        width: 158
+        height: 429
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,7 +209,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12529e7355a31bc41990975c05d422e7
+      spriteID: 23cad4691e86441ef8878a7c88f26c78
       vertices: []
       indices: 
       edges: []
@@ -218,10 +218,10 @@ TextureImporter:
       name: Enemy_attack_3
       rect:
         serializedVersion: 2
-        x: 438
-        y: 1614
-        width: 157
-        height: 431
+        x: 516
+        y: 1601
+        width: 168
+        height: 429
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e9d1a3f893ba824ab26417a04bf2477
+      spriteID: 1e51d657e04dc4461a313899a1b1d607
       vertices: []
       indices: 
       edges: []
@@ -238,10 +238,10 @@ TextureImporter:
       name: Enemy_attack_4
       rect:
         serializedVersion: 2
-        x: 616
-        y: 1612
-        width: 167
-        height: 432
+        x: 716
+        y: 1599
+        width: 180
+        height: 429
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,7 +249,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ce579db2004c434385f064f901fab1b
+      spriteID: e2abcf52e4fd542fcb0a4b0e080620bc
       vertices: []
       indices: 
       edges: []
@@ -258,10 +258,10 @@ TextureImporter:
       name: Enemy_attack_5
       rect:
         serializedVersion: 2
-        x: 809
-        y: 1610
-        width: 178
-        height: 433
+        x: 932
+        y: 1598
+        width: 188
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,7 +269,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bee4893255aba643a49e43565cc3107
+      spriteID: e794b87bbeb73493fa5552fb7e91bfe1
       vertices: []
       indices: 
       edges: []
@@ -278,10 +278,10 @@ TextureImporter:
       name: Enemy_attack_6
       rect:
         serializedVersion: 2
-        x: 1015
-        y: 1610
-        width: 189
-        height: 432
+        x: 1163
+        y: 1597
+        width: 197
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6ef0f80cff55a84cbf08429d11ca6b9
+      spriteID: 374440593ac5c4097a3ca3a94ba527e4
       vertices: []
       indices: 
       edges: []
@@ -298,10 +298,10 @@ TextureImporter:
       name: Enemy_attack_7
       rect:
         serializedVersion: 2
-        x: 1236
-        y: 1609
-        width: 199
-        height: 432
+        x: 1404
+        y: 1596
+        width: 209
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,7 +309,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e091b73acd1c3394c8694822e6058aa3
+      spriteID: 1b65b3cc96d634d80af83b2cf8b94f9e
       vertices: []
       indices: 
       edges: []
@@ -318,10 +318,10 @@ TextureImporter:
       name: Enemy_attack_8
       rect:
         serializedVersion: 2
-        x: 1446
-        y: 1654
-        width: 287
-        height: 391
+        x: 1646
+        y: 1629
+        width: 280
+        height: 395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,7 +329,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad2855a9dfffa6a45ac7fb613d7253d2
+      spriteID: 4de07bb21eb064315862e18a6361ef35
       vertices: []
       indices: 
       edges: []
@@ -338,10 +338,10 @@ TextureImporter:
       name: Enemy_attack_9
       rect:
         serializedVersion: 2
-        x: 3
-        y: 1334
-        width: 426
-        height: 269
+        x: 20
+        y: 1304
+        width: 425
+        height: 273
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,7 +349,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb12d05c63a4b1341babbaaa24519e40
+      spriteID: 23cab8996ec9346d69fd9d70b9c58c6b
       vertices: []
       indices: 
       edges: []
@@ -358,10 +358,10 @@ TextureImporter:
       name: Enemy_attack_10
       rect:
         serializedVersion: 2
-        x: 433
-        y: 1351
-        width: 445
-        height: 249
+        x: 475
+        y: 1316
+        width: 438
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,7 +369,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20389a9d70f5bb64e965fd52aa5991a7
+      spriteID: 52924ac3997a44fbcb89623a5a79b2a8
       vertices: []
       indices: 
       edges: []
@@ -378,10 +378,10 @@ TextureImporter:
       name: Enemy_attack_11
       rect:
         serializedVersion: 2
-        x: 882
-        y: 1364
-        width: 453
-        height: 222
+        x: 944
+        y: 1334
+        width: 445
+        height: 230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,7 +389,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec092d5e7104b448861b25be57c1aa4
+      spriteID: e8aad1f06b9984e7380401a29d4f1280
       vertices: []
       indices: 
       edges: []
@@ -398,10 +398,10 @@ TextureImporter:
       name: Enemy_attack_12
       rect:
         serializedVersion: 2
-        x: 1340
-        y: 1386
-        width: 452
-        height: 203
+        x: 1423
+        y: 1355
+        width: 441
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,7 +409,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e06f1cd989e269428f0f8ec70e6e1ce
+      spriteID: da350dc25cb044aceade6465c64d1d7b
       vertices: []
       indices: 
       edges: []
@@ -418,10 +418,10 @@ TextureImporter:
       name: Enemy_attack_13
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1131
-        width: 441
-        height: 176
+        x: 29
+        y: 1086
+        width: 427
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -429,7 +429,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6871ec9e3838d02418d508d08c192f23
+      spriteID: 047adbca75074489f872781e1bd17b96
       vertices: []
       indices: 
       edges: []
@@ -438,10 +438,10 @@ TextureImporter:
       name: Enemy_attack_14
       rect:
         serializedVersion: 2
-        x: 452
-        y: 1161
-        width: 421
-        height: 159
+        x: 483
+        y: 1123
+        width: 414
+        height: 158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,7 +449,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84d5bc463f596fc4a816456cf7b42a69
+      spriteID: d8b9eaf1d34ac44569bf66e4613c2d9e
       vertices: []
       indices: 
       edges: []
@@ -458,10 +458,10 @@ TextureImporter:
       name: Enemy_attack_15
       rect:
         serializedVersion: 2
-        x: 884
-        y: 1122
-        width: 395
-        height: 200
+        x: 920
+        y: 1084
+        width: 393
+        height: 198
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -469,7 +469,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddaf07403cdd4a3468af649060104ba1
+      spriteID: 1c969c72a644b4cb7a8c172ad1a8a2a5
       vertices: []
       indices: 
       edges: []
@@ -478,10 +478,10 @@ TextureImporter:
       name: Enemy_attack_16
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 1068
-        width: 385
-        height: 251
+        x: 1364
+        y: 1020
+        width: 376
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,7 +489,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36626062708f5564b9d8814e3e8f79d4
+      spriteID: 1c3e73976f1e84198af0af0baead8f13
       vertices: []
       indices: 
       edges: []
@@ -498,10 +498,10 @@ TextureImporter:
       name: Enemy_attack_17
       rect:
         serializedVersion: 2
-        x: 1705
-        y: 984
-        width: 283
-        height: 327
+        x: 1759
+        y: 947
+        width: 281
+        height: 321
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,7 +509,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3077ee6e9e918e43bbec7efe029626c
+      spriteID: 496d22468edab4887b74512f4e993dde
       vertices: []
       indices: 
       edges: []
@@ -518,10 +518,10 @@ TextureImporter:
       name: Enemy_attack_18
       rect:
         serializedVersion: 2
-        x: 12
-        y: 590
-        width: 258
-        height: 354
+        x: 19
+        y: 543
+        width: 257
+        height: 349
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,7 +529,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a22095a0ef4703543ba4c8d3dd6a3920
+      spriteID: 80c3064fc1f584d49a550fba5eaa53fb
       vertices: []
       indices: 
       edges: []
@@ -538,10 +538,10 @@ TextureImporter:
       name: Enemy_attack_19
       rect:
         serializedVersion: 2
-        x: 287
-        y: 568
-        width: 230
-        height: 376
+        x: 304
+        y: 520
+        width: 228
+        height: 372
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,7 +549,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b999120f4487c444691da95b12d5db93
+      spriteID: ef9548f5ce02b433b8d00b1dfe5a0911
       vertices: []
       indices: 
       edges: []
@@ -558,10 +558,10 @@ TextureImporter:
       name: Enemy_attack_20
       rect:
         serializedVersion: 2
-        x: 537
-        y: 553
-        width: 214
-        height: 391
+        x: 563
+        y: 506
+        width: 217
+        height: 386
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -569,7 +569,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb7c18af8188d4641b0413420d62625f
+      spriteID: 9f22ba23f9ef349e2b2d15f2b263d322
       vertices: []
       indices: 
       edges: []
@@ -578,10 +578,10 @@ TextureImporter:
       name: Enemy_attack_21
       rect:
         serializedVersion: 2
-        x: 774
-        y: 543
-        width: 221
-        height: 401
+        x: 820
+        y: 496
+        width: 228
+        height: 396
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -589,7 +589,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a4ccb7c7204dbe4580455a43783e604
+      spriteID: bcb0499014e2d4ab8bc45419fb2794c4
       vertices: []
       indices: 
       edges: []
@@ -598,10 +598,10 @@ TextureImporter:
       name: Enemy_attack_22
       rect:
         serializedVersion: 2
-        x: 1012
-        y: 539
-        width: 234
-        height: 406
+        x: 1083
+        y: 492
+        width: 237
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,7 +609,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83352a535cc7c4640993ff37ce6f9ea0
+      spriteID: d170bd2b5f3544afbbfe65d56adeaee6
       vertices: []
       indices: 
       edges: []
@@ -618,10 +618,10 @@ TextureImporter:
       name: Enemy_attack_23
       rect:
         serializedVersion: 2
-        x: 1265
-        y: 534
-        width: 224
-        height: 412
+        x: 1356
+        y: 488
+        width: 229
+        height: 408
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -629,7 +629,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 665379688b6efb04895317d736bb93d3
+      spriteID: e01d95d78631c43ddb33cc896b4533b4
       vertices: []
       indices: 
       edges: []
@@ -638,10 +638,10 @@ TextureImporter:
       name: Enemy_attack_24
       rect:
         serializedVersion: 2
-        x: 1508
-        y: 529
-        width: 213
-        height: 417
+        x: 1623
+        y: 483
+        width: 218
+        height: 413
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -649,7 +649,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3532b2329b3a01248920c2313ece0d9a
+      spriteID: f8fe22d09be91401790fa8d51ffda3f1
       vertices: []
       indices: 
       edges: []
@@ -658,10 +658,10 @@ TextureImporter:
       name: Enemy_attack_25
       rect:
         serializedVersion: 2
-        x: 1738
-        y: 526
-        width: 200
-        height: 422
+        x: 22
+        y: 43
+        width: 207
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -669,7 +669,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a7bf12851856c4eafc762435ea8d54
+      spriteID: 0aeaf329485e644aaba882c755929b4a
       vertices: []
       indices: 
       edges: []
@@ -678,10 +678,10 @@ TextureImporter:
       name: Enemy_attack_26
       rect:
         serializedVersion: 2
-        x: 14
-        y: 94
-        width: 187
-        height: 426
+        x: 260
+        y: 40
+        width: 196
+        height: 424
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -689,7 +689,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 091749bd961bb9840acf8dd95525b953
+      spriteID: 3611e45b225474956846b816ce9ce0da
       vertices: []
       indices: 
       edges: []
@@ -698,10 +698,10 @@ TextureImporter:
       name: Enemy_attack_27
       rect:
         serializedVersion: 2
-        x: 213
-        y: 95
-        width: 172
-        height: 427
+        x: 483
+        y: 42
+        width: 185
+        height: 424
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,7 +709,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 980d8287343311b48aa1d0658bdafe48
+      spriteID: 409d8215d06264ae7a7d75b5a64f215c
       vertices: []
       indices: 
       edges: []
@@ -718,10 +718,10 @@ TextureImporter:
       name: Enemy_attack_28
       rect:
         serializedVersion: 2
-        x: 394
-        y: 95
-        width: 158
-        height: 428
+        x: 688
+        y: 42
+        width: 169
+        height: 426
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -729,7 +729,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99f9090beba66134b8be7a4e36799011
+      spriteID: db2fc3028b97b49e99eb301187ae5acf
       vertices: []
       indices: 
       edges: []
@@ -738,9 +738,9 @@ TextureImporter:
       name: Enemy_attack_29
       rect:
         serializedVersion: 2
-        x: 556
-        y: 97
-        width: 142
+        x: 874
+        y: 44
+        width: 154
         height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -749,7 +749,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc4cb57ccc6d6cd458a18815c39cf989
+      spriteID: fed2ccf996fae47c1888911a41008822
       vertices: []
       indices: 
       edges: []

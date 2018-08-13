@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4694061974704838}
   - component: {fileID: 212276736443721012}
   - component: {fileID: 95297842540886100}
-  - component: {fileID: 114044858471612002}
   m_Layer: 0
   m_Name: floor_0
   m_TagString: Untagged
@@ -60,17 +59,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114044858471612002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968816521863824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46768a46e52c4be8b6364d037cf87bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212276736443721012
 SpriteRenderer:
   m_ObjectHideFlags: 1

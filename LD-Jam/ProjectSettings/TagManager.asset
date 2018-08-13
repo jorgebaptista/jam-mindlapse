@@ -9,6 +9,8 @@ TagManager:
   - Waypoint
   - Wall
   - Enemy
+  - Clay
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -26,8 +28,8 @@ TagManager:
   - PlayerAttack
   - Enemy
   - EnemyAttack
-  - 
-  - 
+  - Clay
+  - Scenery
   - 
   - 
   - 

@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class RoomManagerScript : MonoBehaviour
 {
-    [Header("Rooms Settings")]
+    [Header("Room Settings")]
+    [Space]
+    [Tooltip("Put rooms you want to disappear here FIRST.")]
+    [SerializeField]
+    private GameObject[] rooms;
+    [Tooltip("Put rooms you want to disappear here LAST, example: the ones in the middle.")]
+    [SerializeField]
+    private GameObject[] lastRooms;
+
+    [Header("Flash Settings")]
     [Space]
     [SerializeField]
     [Tooltip("Time until random room starts flashing.")]
@@ -38,16 +47,32 @@ public class RoomManagerScript : MonoBehaviour
 
     private RoomScript roomScript;
 
-    private GameObject[] rooms;
+    public static RoomManagerScript instance;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         ResetFlash();
     }
 
     private void Start()
     {
-        rooms = GameObject.FindGameObjectsWithTag("Room");
+        int totalRooms = GameObject.FindGameObjectsWithTag("Room").Length;
+
+        int pickedRooms = rooms.Length + lastRooms.Length;
+
+        if (totalRooms != pickedRooms)
+        {
+            Debug.LogError("Not all rooms were picked. Please drag and drop every room into the RoomManagerScript arrays in the 'Rooms' gameobject specifically.");
+        }
     }
 
     private void Update()
@@ -63,6 +88,8 @@ public class RoomManagerScript : MonoBehaviour
     private void CallRandomRoom()
     {
         int activeRooms = 0;
+        int activeLastRooms = 0;
+        int totalActiveRooms = 0;
 
         for (int i = 0; i < rooms.Length; ++i)
         {
@@ -71,16 +98,40 @@ public class RoomManagerScript : MonoBehaviour
                 ++activeRooms;
             }
         }
-
-        if (activeRooms > 0)
+        for (int i = 0; i < lastRooms.Length; ++i)
         {
-            while (roomScript == null)
+            if (!lastRooms[i].GetComponent<RoomScript>().isBroken)
             {
-                RoomScript avaiableRoom = rooms[Random.Range(0, rooms.Length)].GetComponent<RoomScript>();
+                ++activeLastRooms;
+            }
+        }
 
-                if (!avaiableRoom.isBroken)
+        totalActiveRooms = activeLastRooms + activeRooms;
+        // choose last rooms to disappear
+        if (totalActiveRooms > 0)
+        {
+            if (activeRooms > 0)
+            {
+                while (roomScript == null)
                 {
-                    roomScript = avaiableRoom;
+                    RoomScript avaiableRoom = rooms[Random.Range(0, rooms.Length)].GetComponent<RoomScript>();
+
+                    if (!avaiableRoom.isBroken)
+                    {
+                        roomScript = avaiableRoom;
+                    }
+                }
+            }
+            else if (activeLastRooms > 0)
+            {
+                while (roomScript == null)
+                {
+                    RoomScript avaiableRoom = lastRooms[Random.Range(0, lastRooms.Length)].GetComponent<RoomScript>();
+
+                    if (!avaiableRoom.isBroken)
+                    {
+                        roomScript = avaiableRoom;
+                    }
                 }
             }
 
@@ -89,8 +140,7 @@ public class RoomManagerScript : MonoBehaviour
         else
         {
             GameManagerScript.instance.GameOver();
-        }
-        
+        }        
     }
 
     public void ResetFlash()
@@ -98,5 +148,15 @@ public class RoomManagerScript : MonoBehaviour
         canFlash = true;
         roomScript = null;
         baseTimer = roomTimer + Time.time;
+    }
+
+    public void WallUpdate()
+    {
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+
+        for (int i = 0; i < walls.Length; ++i)
+        {
+            walls[i].GetComponent<WallScript>().ScanRoom();
+        }
     }
 }

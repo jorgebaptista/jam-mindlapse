@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\CollapseScript.cs" />
+    <Compile Include="Assets\Scripts\ClayScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyDieBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyScript.cs" />
@@ -79,10 +79,13 @@
     <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\RandomizeAnimationStart.cs" />
     <Compile Include="Assets\Scripts\Scenary\RoomScript.cs" />
+    <Compile Include="Assets\Scripts\SetRandomSprite.cs" />
     <Compile Include="Assets\Scripts\UI\DialogueContainerScript.cs" />
     <Compile Include="Assets\Scripts\UI\XMLReader.cs" />
+    <Compile Include="Assets\Scripts\WallScript.cs" />
     <Compile Include="Assets\Scripts\ZOrderScript.cs" />
     <Compile Include="Assets\Sounds\SFX\SoundFXPlayer.cs" />
+    <Compile Include="Assets\WallCollapseBehaviour.cs" />
     <None Include="Assets\Scripts\UI\Resources\Dialogue.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/Files/Projects/Jams/ludumdare-08-2018/LD-Jam/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

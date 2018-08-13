@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour, IDamageable
 {
@@ -33,6 +34,12 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [SerializeField]
     private Transform shootPoint;
     [SerializeField]
+    private GameObject dummyOrb;
+    [SerializeField]
+    private GameObject radiusIndicator;
+
+    [Space]
+    [SerializeField]
     private GameObject orbPrefab;
 
     private int poolIndex;
@@ -41,6 +48,16 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [Space]
     [SerializeField]
     private Image timerBar;
+
+    [Space]
+    [SerializeField]
+    private GameObject canvas;
+    [SerializeField]
+    private RectTransform clayIndicatorPos;
+    [SerializeField]
+    private GameObject clayIndicatorPrefab;
+
+    [Space]
     [SerializeField]
     private GameObject dialogueOverlay;
     [SerializeField]
@@ -56,11 +73,13 @@ public class PlayerScript : MonoBehaviour, IDamageable
     private bool inFlashingRoom;
     private bool inBrokenRoom;
 
+    private Animator myAnimator;
     private Rigidbody2D myRigidBody2D;
     private RoomScript roomScript;
 
     private void Awake()
     {
+        myAnimator = GetComponent<Animator>();
         myRigidBody2D = GetComponent<Rigidbody2D>();
 
         currentClayPoints = startingClayPoints;
@@ -73,6 +92,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
         poolIndex = PoolManagerScript.instance.PreCache(orbPrefab, 2);
     }
 
+    bool goingUp = false;
     private void Update()
     {
         if (!GameManagerScript.instance.isPaused)
@@ -80,21 +100,95 @@ public class PlayerScript : MonoBehaviour, IDamageable
             horizontalMove = Input.GetAxisRaw("Horizontal");
             verticalMove = Input.GetAxisRaw("Vertical");
 
+            //Vector2 mousePos = Input.mousePosition;
+
+            //if (mousePos.x > Screen.width / 2)
+            //{
+            //    if (mousePos.x > Screen.width / 3 && mousePos.x < Screen.width * 2 / 3 )
+            //    {
+            //        if (mousePos.y > (2 * Screen.height) / 3)
+            //        {
+            //            myAnimator.SetBool("Up", true);
+            //            myAnimator.SetBool("Horizontal", false);
+            //            myAnimator.SetBool("Down", false);
+            //        }
+            //        else if (mousePos.y < Screen.height / 3)
+            //        {
+            //            myAnimator.SetBool("Up", false);
+            //            myAnimator.SetBool("Horizontal", false);
+            //            myAnimator.SetBool("Down", true);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        myAnimator.SetBool("Up", false);
+            //        myAnimator.SetBool("Horizontal", true);
+            //        myAnimator.SetBool("Down", false);
+            //    }
+            //}
+            //else
+            //{
+            //    if (mousePos.y < (2 * Screen.height) / 3)
+            //    {
+            //        myAnimator.SetBool("Up", true);
+            //        myAnimator.SetBool("Horizontal", false);
+            //        myAnimator.SetBool("Down", false);
+            //    }
+            //    else if (mousePos.y > Screen.height / 3)
+            //    {
+            //        myAnimator.SetBool("Up", false);
+            //        myAnimator.SetBool("Horizontal", false);
+            //        myAnimator.SetBool("Down", true);
+            //    }
+            //    else
+            //    {
+            //        myAnimator.SetBool("Up", false);
+            //        myAnimator.SetBool("Horizontal", true);
+            //        myAnimator.SetBool("Down", false);
+            //    }
+            //}
+
             if (Time.time > baseTimer)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonUp("Fire1"))
                 {
                     Shoot();
                 }
             }
 
-            if (Input.GetButton("Fire1"))
+            if (verticalMove > 0) goingUp = true;
+            if (verticalMove < 0 || horizontalMove != 0) goingUp = false;
+            if (Input.GetButton("Fire1") && Time.time > baseTimer)
             {
-                arm.localRotation = Quaternion.Euler(0, 0, 0);
+                if (goingUp) {
+                    arm.localPosition = new Vector3(-0.5f, 0.38f, 10f);
+                    arm.localRotation = Quaternion.Euler(0, 0, -185.4f);
+                    arm.localScale = new Vector3(1, -1, 1);
+                } else {
+                    arm.localScale = new Vector3(1, 1, 1);
+                    arm.localRotation = Quaternion.Euler(0, 0, -16f);
+                    arm.localPosition = new Vector3(0.7f, 0.46f, 10f);
+                }
+
+                dummyOrb.SetActive(true);
+                radiusIndicator.SetActive(true);
+                Vector2 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+                radiusIndicator.transform.position = new Vector2(mousepos.x, mousepos.y);
             }
             else
             {
-                arm.localRotation = Quaternion.Euler(0, 0, -90);
+                if (goingUp) {
+                    arm.localPosition = new Vector3(-0.45f, 0.38f, 10f);
+                    arm.localRotation = Quaternion.Euler(0, 0, -70f);//110f);
+                    arm.localScale = new Vector3(1, -1, 1);
+                } else {
+                    arm.localScale = new Vector3(1, 1, 1);
+                    arm.localRotation = Quaternion.Euler(0, 0, -110f);
+                    arm.localPosition = new Vector3(0.41f, 0.53f, 10f);
+                }
+
+                dummyOrb.SetActive(false);
+                radiusIndicator.SetActive(false);
             }
 
             if (Input.GetButton("Interact"))
@@ -122,6 +216,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         myRigidBody2D.velocity = new Vector2(horizontalMove * movementSpeed, verticalMove * movementSpeed);
+
+        //myAnimator.SetFloat("Movement", Math.Abs(Math.Max(horizontalMove, verticalMove)));
     }
 
     public void TakeDamage(int damage)
@@ -132,6 +228,15 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
     public void UpdateClayPoints(int value)
     {
+        GameObject clayIndicator = Instantiate(clayIndicatorPrefab, canvas.transform);
+        TextMeshProUGUI clayIndicatorText = clayIndicator.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        clayIndicatorText.text = value.ToString();
+        clayIndicatorText.color = value < 0 ? Color.red : Color.green;
+
+        clayIndicator.gameObject.SetActive(false);
+        clayIndicator.gameObject.SetActive(true);
+
         currentClayPoints += value;
         bool increased = value > 0;
 
@@ -187,7 +292,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
         {
             orb.transform.position = shootPoint.position;
             orb.SetActive(true);
-            orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed);
+            orb.GetComponent<OrbScript>().ProjectTo(mousePos, shootSpeed, damage);
 
             arm.localRotation = Quaternion.Euler(0, 0, -90);
         }

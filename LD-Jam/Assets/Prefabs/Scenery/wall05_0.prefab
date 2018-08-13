@@ -21,12 +21,11 @@ GameObject:
   - component: {fileID: 4466838425141598}
   - component: {fileID: 212610793308702670}
   - component: {fileID: 95339094255822182}
-  - component: {fileID: 114151398808048088}
   - component: {fileID: 61597813974172830}
   - component: {fileID: 114760909977449376}
   m_Layer: 8
   m_Name: wall05_0
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,17 +86,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114151398808048088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661390355961332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46768a46e52c4be8b6364d037cf87bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114760909977449376
 MonoBehaviour:
   m_ObjectHideFlags: 1
