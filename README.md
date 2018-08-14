@@ -3,7 +3,7 @@
 
 Battle against the monsters in your mind as they slowly erode your sanity, but watch out — the longer you fight, the more damage your mind takes. Do your best to hold it together or you'll soon find yourself with no mind at all.
 
-Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+**Check our Ludum Dare submission on:** [Ludum Dare website](https://ldjam.com/events/ludum-dare/42/mindlapse/).
 
 **Download and play:** [Windows/Linux/Mac](https://azathothep.itch.io/mind)
 
