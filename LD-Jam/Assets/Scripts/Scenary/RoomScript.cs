@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RoomScript : MonoBehaviour
 {
@@ -52,11 +53,39 @@ public class RoomScript : MonoBehaviour
         if (isFlashing)
         {
             Flash();
+
+            repairCanvas.SetActive(true);
+
+            TextMeshProUGUI repairTextMesh = repairCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+            if (PlayerScript.currentClayPoints < GameManagerScript.instance.saveRoomPrice)
+            {
+                repairTextMesh.color = Color.red;
+            }
+            else
+            {
+                repairTextMesh.color = Color.yellow;
+            }
+        }
+        else
+        {
+            repairCanvas.SetActive(false);
         }
 
         if (isBroken && hasPlayerIn)
         {
             rebuildCanvas.SetActive(true);
+
+            TextMeshProUGUI rebuildTextMesh = rebuildCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+            if (PlayerScript.currentClayPoints < GameManagerScript.instance.repairRoomPrice)
+            {
+                rebuildTextMesh.color = Color.red;
+            }
+            else
+            {
+                rebuildTextMesh.color = Color.yellow;
+            }
         }
         else
         {
@@ -75,8 +104,6 @@ public class RoomScript : MonoBehaviour
 
         //PlayerScriptHolder.RoomWarning();
         FindObjectOfType<SoundFXPlayer>().PlayRoomCrackSound();
-
-        repairCanvas.SetActive(true);
     }
 
     private void Flash()
@@ -116,8 +143,6 @@ public class RoomScript : MonoBehaviour
         }
 
         RoomManagerScript.instance.ResetFlash();
-
-        repairCanvas.SetActive(false);
     }
 
     private void Break()
@@ -210,28 +235,28 @@ public class RoomScript : MonoBehaviour
         {
             hasPlayerIn = true;
 
-            playerScript  = playerScript ?? other.GetComponent<PlayerScript>();
+            PlayerScript playerScriptTemp  = other.GetComponentInParent<PlayerScript>();
 
             if (!isBroken)
             {
                 if (isFlashing)
                 {
-                    PlayerScriptHolder.ToggleInFlashingRoom(true, this);
+                    playerScriptTemp.ToggleInFlashingRoom(true, this);
                 }
                 else
                 {
-                    PlayerScriptHolder.ToggleInFlashingRoom(false);
+                    playerScriptTemp.ToggleInFlashingRoom(false);
                 }
             }
             else if (isBroken)
             {
-                PlayerScriptHolder.ToggleInBrokenRoom(true, this);
-                PlayerScriptHolder.RoomBuild();
+                playerScriptTemp.ToggleInBrokenRoom(true, this);
+                playerScriptTemp.RoomBuild();
             }
             else
             {
                 //PlayerScriptHolder.ToggleInFlashingRoom(false);
-                PlayerScriptHolder.ToggleInBrokenRoom(false);
+                playerScriptTemp.ToggleInBrokenRoom(false);
             }
         }
     }
@@ -242,18 +267,15 @@ public class RoomScript : MonoBehaviour
         {
             hasPlayerIn = false;
 
-            if (playerScript == null)
-            {
-                playerScript = other.GetComponent<PlayerScript>();
-            }
+            PlayerScript playerScriptTemp = other.GetComponentInParent<PlayerScript>();
 
             if (!isBroken)
             {
-                PlayerScriptHolder.ToggleInFlashingRoom(false);
+                playerScriptTemp.ToggleInFlashingRoom(false);
             }
             else if (isBroken)
             {
-                PlayerScriptHolder.ToggleInBrokenRoom(false);
+                playerScriptTemp.ToggleInBrokenRoom(false);
             }
         }
     }

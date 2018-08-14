@@ -20,6 +20,10 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
     [Space]
     [SerializeField]
+    private float losePerceptionTime = 5f;
+
+    [Space]
+    [SerializeField]
     private bool isFacingLeft = true;
 
     [Header("Attack Settings")]
@@ -64,6 +68,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
     private bool isAttacking;
     private bool attacked;
     private bool canFlip;
+    private bool hasPerception = true;
 
     //private SpriteRenderer mySpriteRenderer;
     private Animator myAnimator;
@@ -113,7 +118,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
         {
             horizontalPosition = transform.position.x;
 
-            if (Physics2D.OverlapCircleNonAlloc(transform.position, perceptionRadius, new Collider2D[1], playerLayerMask) == 0)
+            if (!hasPerception || Physics2D.OverlapCircleNonAlloc(transform.position, perceptionRadius, new Collider2D[1], playerLayerMask) == 0)
             {
                 if ((Vector2)transform.position != currentWaypoint)
                 {
@@ -170,7 +175,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
                 }
             }
 
-            if (!isAttacking)
+            if (!isAttacking && hasPerception)
             {
                 if (Physics2D.OverlapCircleNonAlloc(playerCheck.position, checkRadius, new Collider2D[1], playerLayerMask) > 0)
                 {
@@ -244,6 +249,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
         {
             isAttacking = false;
             attacked = false;
+            LosePerception();
         }
     }
 
@@ -253,6 +259,17 @@ public class EnemyScript : MonoBehaviour, IDamageable
         myLocalRotation.y += 180f;
         transform.localEulerAngles = myLocalRotation;
         isFacingLeft = !isFacingLeft;
+    }
+
+    private void LosePerception()
+    {
+        hasPerception = false;
+        CancelInvoke("RegainPerception");
+        Invoke("RegainPerception", losePerceptionTime);
+    }
+    private void RegainPerception()
+    {
+        hasPerception = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

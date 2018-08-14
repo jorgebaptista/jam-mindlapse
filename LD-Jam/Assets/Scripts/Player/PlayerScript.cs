@@ -18,6 +18,16 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [SerializeField]
     private float movementSpeed = 3f;
 
+    [Space]
+    [SerializeField]
+    private bool canBeImmune = true;
+    [SerializeField]
+    private float immuneTimer = 2f;
+
+    [Space]
+    [SerializeField]
+    private bool showRadiusAlways = true;
+
     [Header("Attack")]
     [Space]
     [SerializeField]
@@ -65,7 +75,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
     [SerializeField]
     private XMLReader dialogueSource;
 
-    private int currentClayPoints;
+    public static int currentClayPoints;
 
     private float horizontalMove;
     private float verticalMove;
@@ -74,6 +84,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
     private bool inFlashingRoom;
     private bool inBrokenRoom;
     private bool isInteracting;
+    private bool isImmune;
 
     private Animator myAnimator;
     private Rigidbody2D myRigidBody2D;
@@ -151,12 +162,29 @@ public class PlayerScript : MonoBehaviour, IDamageable
             //}
             if (!isInteracting)
             {
+                if (showRadiusAlways)
+                {
+                    radiusIndicator.SetActive(true);
+                    Vector2 radiusMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+                    radiusIndicator.transform.position = new Vector2(radiusMousePos.x, radiusMousePos.y);
+                }
                 if (Time.time > baseTimer)
                 {
+                    if (!showRadiusAlways)
+                    {
+                        radiusIndicator.SetActive(true);
+                        Vector2 radiusMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+                        radiusIndicator.transform.position = new Vector2(radiusMousePos.x, radiusMousePos.y);
+                    }
+
                     if (Input.GetButtonUp("Fire1"))
                     {
                         Shoot();
                     }
+                }
+                else if (!showRadiusAlways)
+                {
+                    radiusIndicator.SetActive(false);
                 }
 
                 if (verticalMove > 0) goingUp = true;
@@ -179,9 +207,6 @@ public class PlayerScript : MonoBehaviour, IDamageable
                     }
 
                     dummyOrb.SetActive(true);
-                    radiusIndicator.SetActive(true);
-                    Vector2 mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-                    radiusIndicator.transform.position = new Vector2(mousepos.x, mousepos.y);
                 }
                 else
                 {
@@ -199,7 +224,6 @@ public class PlayerScript : MonoBehaviour, IDamageable
                     }
 
                     dummyOrb.SetActive(false);
-                    radiusIndicator.SetActive(false);
                 }
             }
 
@@ -237,9 +261,12 @@ public class PlayerScript : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        UpdateClayPoints(-damage);
+        if (!isImmune)
+        {
+            UpdateClayPoints(-damage);
 
-        FindObjectOfType<SoundFXPlayer>().PlayOuchSound();
+            FindObjectOfType<SoundFXPlayer>().PlayOuchSound();
+        }
     }
 
     public void UpdateClayPoints(int value)
@@ -406,6 +433,21 @@ public class PlayerScript : MonoBehaviour, IDamageable
     {
         string dialogue = dialogueSource.GetCharacterDialogue("Room_Build", currentClayPoints);
         dialogueOverlay.GetComponent<DialogueContainerScript>().Display(dialogue);
+    }
+
+    public void MakeImmune()
+    {
+        if (!isImmune && canBeImmune)
+        {
+            isImmune = true;
+
+            CancelInvoke("Immunity");
+            Invoke("Immunity", immuneTimer);
+        }
+    }
+    private void Immunity()
+    {
+        isImmune = false;
     }
 
     private void ToggleTimerBar(bool toggle)

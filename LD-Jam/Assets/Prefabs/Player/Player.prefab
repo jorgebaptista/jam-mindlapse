@@ -58,7 +58,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1153819948674832
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1877313646900212
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153819948674832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.97, y: 1.42, z: 0}
+  m_LocalPosition: {x: -1.19, y: -2.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4576070737938124}
@@ -324,7 +324,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.032398045}
+  m_Offset: {x: 0.049726427, y: 0.032397985}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -335,7 +335,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8452814, y: 3.6105428}
+  m_Size: {x: 1.9447342, y: 3.6105428}
   m_EdgeRadius: 0
 --- !u!61 &61901991040021528
 BoxCollider2D:
@@ -586,9 +586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fd85a44275b4a4d875ba1d8fd8bda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingClayPoints: 100
+  startingClayPoints: 3
   maxClayPoints: 1000
   movementSpeed: 7
+  canBeImmune: 1
+  immuneTimer: 1
+  showRadiusAlways: 1
   damage: 1
   shootSpeed: 10
   cooldown: 1
@@ -598,6 +601,7 @@ MonoBehaviour:
   radiusIndicator: {fileID: 0}
   orbPrefab: {fileID: 1667231874515866, guid: aefe7cbd68d4c4506b497502dd57d97c, type: 2}
   timerBar: {fileID: 114217580414645384}
+  timerBarBack: {fileID: 1119453466405546}
   canvas: {fileID: 1877313646900212}
   clayIndicatorPos: {fileID: 224274424489320732}
   clayIndicatorPrefab: {fileID: 1177507513198432, guid: a5d638befb1bdd8489501040105ddde4,
@@ -826,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f720c41be725a343ad842b844c3b299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textDisplayTime: 5
+  textDisplayTime: 3
   dialogueText: {fileID: 114741873914787868}
 --- !u!114 &114835564536891964
 MonoBehaviour:

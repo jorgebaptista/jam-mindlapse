@@ -86,7 +86,7 @@ public class OrbScript : MonoBehaviour
 
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<PlayerScript>().Immunity();
+                other.GetComponent<PlayerScript>().MakeImmune();
             }
         }
     }
