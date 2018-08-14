@@ -1,4 +1,4 @@
-# Mindlapse
+## Mindlapse
 *Some people say that the mind is a palace — reality has other ideas.*
 
 Battle against the monsters in your mind as they slowly erode your sanity, but watch out — the longer you fight, the more damage your mind takes. Do your best to hold it together or you'll soon find yourself with no mind at all.
