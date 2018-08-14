@@ -25,4 +25,9 @@ Battle against the monsters in your mind as they slowly erode your sanity, but w
 
 @vulture-42 (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
 
-[Check our Ludum Dare submission here](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+
+## License:
+
+Code licensed under the [MIT License](https://opensource.org/licenses/MIT).
+Assets licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
