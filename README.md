@@ -5,7 +5,7 @@ Battle against the monsters in your mind as they slowly erode your sanity, but w
 
 **Check our Ludum Dare submission on:** [Ludum Dare website](https://ldjam.com/events/ludum-dare/42/mindlapse/).
 
-**Download and play:** [Windows/Linux/Mac](https://azathothep.itch.io/mind)
+**Download and play:** [Web/Windows/Linux/Mac](https://azathothep.itch.io/mind)
 
 ## Controls
 
