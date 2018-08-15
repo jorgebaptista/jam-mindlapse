@@ -19,13 +19,13 @@ Battle against the monsters in your mind as they slowly erode your sanity, but w
 
 ## Meet the team
 
-@0xff0000 (Abraham den Hond) — art, animations
+[@0xff0000](https://ldjam.com/users/0xff0000) (Abraham den Hond) — art, animations
 
-@azathothep (Félix Belthoise) — level design, music | [other Itch games](https://azathothep.itch.io/)
+[@azathothep](https://ldjam.com/users/azathothep) (Félix Belthoise) — level design, music | [other Itch games](https://azathothep.itch.io/)
 
-@jorge-baptista (Jorge Baptista) — programming | [JorgeBaptista_](https://twitter.com/JorgeBaptista_)  |  [Itch](https://itch.io/profile/belz)
+[@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [JorgeBaptista_](https://twitter.com/JorgeBaptista_)  |  [Itch](https://itch.io/profile/belz)
 
-@vulture-42 (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
+[@vulture-42](https://ldjam.com/users/jorge-baptista) (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
 
 ## License:
 
