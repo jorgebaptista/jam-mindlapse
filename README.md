@@ -23,7 +23,7 @@ Battle against the monsters in your mind as they slowly erode your sanity, but w
 
 [@azathothep](https://ldjam.com/users/azathothep) (Félix Belthoise) — level design, music | [other Itch games](https://azathothep.itch.io/)
 
-[@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [JorgeBaptista_](https://twitter.com/JorgeBaptista_)  |  [Itch](https://itch.io/profile/belz)
+[@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [Github](https://github.com/Belz/) | [Twitter](https://twitter.com/JorgeBaptista_)  |  [Itch](https://itch.io/profile/belz)
 
 [@vulture-42](https://ldjam.com/users/jorge-baptista) (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
 
