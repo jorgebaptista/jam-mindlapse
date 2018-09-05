@@ -66,7 +66,7 @@ PlayerSettings:
   androidBlitType: 0
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 1
+  runInBackground: 0
   captureSingleScreen: 0
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
@@ -626,7 +626,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: bee50a94-a53e-46bf-b679-d5b61ef4c0be
-  projectName: LD-Jam
+  projectName: Mindlapse
   organizationId: incredibly-awesome-ludum-dare-team
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
