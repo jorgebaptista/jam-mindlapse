@@ -1,11 +1,30 @@
-# Mindlapse
-*Some people say that the mind is a palace — reality has other ideas.*
+![alt text](https://github.com/Belz/jam-ludumdare-08-2018/blob/master/Promotional/Cover.png "Cover")
+<hr>
 
-Battle against the monsters in your mind as they slowly erode your sanity, but watch out — the longer you fight, the more damage your mind takes. Do your best to hold it together or you'll soon find yourself with no mind at all.
+<p align="center"><i>Some people say that the mind is a palace — reality has other ideas.</i></p><br>
 
-**Check our Ludum Dare submission on:** [Ludum Dare website](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+Battle against the monsters in your mind as they slowly erode your sanity, but watch out — the longer you fight, the more damage your mind takes. 
 
-**Download and play:** [Web/Windows/Linux/Mac](https://azathothep.itch.io/mind)
+Do your best to hold it together or you'll soon find yourself with no mind at all.
+
+<hr>
+
+![alt text](https://github.com/Belz/jam-ludumdare-08-2018/blob/master/Promotional/Gameplay_02.jpg "Gameplay")
+
+
+Check our Ludum Dare submission [here!](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+
+
+## Download & Play
+
+- [Web](https://azathothep.itch.io/mind)
+
+- [Windows]()
+
+- [Linux]()
+
+- [Mac]()
+
 
 ## Controls
 
@@ -17,13 +36,14 @@ Battle against the monsters in your mind as they slowly erode your sanity, but w
 
 - Defeat monsters to regain sanity.
 
+
 ## Meet the team
 
 [@0xff0000](https://ldjam.com/users/0xff0000) (Abraham den Hond) — art, animations
 
 [@azathothep](https://ldjam.com/users/azathothep) (Félix Belthoise) — level design, music | [other Itch games](https://azathothep.itch.io/)
 
-[@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [Github](https://github.com/Belz/) | [Twitter](https://twitter.com/JorgeBaptista_)  |  [Itch](https://belz.itch.io/)
+[@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [Github](https://github.com/Belz/) / [Twitter](https://twitter.com/JorgeBaptista_)  /  [Itch](https://belz.itch.io/)
 
 [@vulture-42](https://ldjam.com/users/jorge-baptista) (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
 
