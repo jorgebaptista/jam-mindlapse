@@ -12,7 +12,7 @@ Do your best to hold it together or you'll soon find yourself with no mind at al
 ![alt text](https://github.com/Belz/jam-ludumdare-08-2018/blob/master/Promotional/Gameplay_02.jpg "Gameplay")
 
 
-Check our Ludum Dare submission [here!](https://ldjam.com/events/ludum-dare/42/mindlapse/).
+Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mindlapse/).
 
 
 ## Download & Play
