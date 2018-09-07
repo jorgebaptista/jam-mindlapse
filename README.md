@@ -13,17 +13,6 @@ Do your best to hold it together or you'll soon find yourself with no mind at al
 Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mindlapse/).
 
 
-## Download & Play
-
-- [Web](https://azathothep.itch.io/mind)
-
-- [Windows]()
-
-- [Linux]()
-
-- [Mac]()
-
-
 ## Controls
 
 - Use WASD to move.
@@ -35,6 +24,19 @@ Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mi
 - Defeat monsters to regain sanity.
 
 
+## Download & Play
+
+- [Web](https://azathothep.itch.io/mind)
+
+- [Windows](https://github.com/Belz/jam-ludumdare-08-2018/releases/download/v1.0.0-alpha/Mindlapse_Windows.zip)
+
+- [Linux](https://github.com/Belz/jam-ludumdare-08-2018/releases/download/v1.0.0-alpha/Mindlapse_Linux.zip)
+
+- [Mac](https://github.com/Belz/jam-ludumdare-08-2018/releases/download/v1.0.0-alpha/Mindlapse_Mac.zip)
+
+- [Source](https://github.com/Belz/jam-ludumdare-08-2018/archive/v1.0.0-alpha.zip)
+
+
 ## Meet the team
 
 [@0xff0000](https://ldjam.com/users/0xff0000) (Abraham den Hond) — art, animations
@@ -44,6 +46,7 @@ Check our Ludum Dare submission [here](https://ldjam.com/events/ludum-dare/42/mi
 [@jorge-baptista](https://ldjam.com/users/jorge-baptista) (Jorge Baptista) — programming | [Github](https://github.com/Belz/) / [Twitter](https://twitter.com/JorgeBaptista_)  /  [Itch](https://belz.itch.io/)
 
 [@vulture-42](https://ldjam.com/users/jorge-baptista) (Katherine Franklin) — narrative design, sound effects | [Vulture_42](https://twitter.com/Vulture_42)
+
 
 ## License:
 
